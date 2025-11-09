@@ -1,0 +1,14 @@
+# Visual Studio cache
+.vs/
+
+# Build and database files
+*.mdf
+*.ldf
+*.suo
+*.user
+*.dbmdl
+
+# Temporary files
+*.obj
+*.log
+*.tmp
