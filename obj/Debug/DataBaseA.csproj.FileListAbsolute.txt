@@ -2,10 +2,12 @@ C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\bin\Debug\DataBaseA.exe.config
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\bin\Debug\DataBaseA.exe
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\bin\Debug\DataBaseA.pdb
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.csproj.AssemblyReference.cache
-C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.Form1.resources
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.Properties.Resources.resources
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.csproj.GenerateResource.cache
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.csproj.CoreCompileInputs.cache
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.exe
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.pdb
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.exe.config
+C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.LoginForm.resources
+C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.WelderInfo.resources
+C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.RegisterForm.resources
