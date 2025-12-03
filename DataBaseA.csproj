@@ -70,6 +70,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseADataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FrontPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrontPage.Designer.cs">
+      <DependentUpon>FrontPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrontPage.resx">
+      <DependentUpon>FrontPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
