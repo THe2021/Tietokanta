@@ -62,7 +62,12 @@ namespace DataBaseA
                     }
                 }
             
-            MessageBox.Show("Done!");
+
+                this.Hide();
+
+                WelderListForm welderlistform = new WelderListForm();
+                welderlistform.FormClosed += (s, args) => this.Close();
+                welderlistform.Show();
 
             }
             catch (Exception ex)

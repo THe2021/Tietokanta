@@ -70,12 +70,14 @@ namespace DataBaseA
 
                             if (storedHash == hashedPassword)
                             {
-                                MessageBox.Show("Login successful!");
+                         
 
-                                WelderInfo welderInfo = new WelderInfo();
-                                welderInfo.Show();
 
-                                this.Hide();  // hides LoginForm
+                                this.Hide();
+
+                                WelderListForm welderlistform = new WelderListForm();
+                                welderlistform.FormClosed += (s, args) => this.Close(); // Close RegisterForm only after loginForm closes
+                                welderlistform.Show();
                             }
                             else
                             {

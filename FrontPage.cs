@@ -19,6 +19,8 @@ namespace DataBaseA
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Hide();
+
             LoginForm login = new LoginForm();
             login.FormClosed += (s, args) => this.Close();  // close FrontPage *after* LoginForm is closed
 
@@ -27,10 +29,18 @@ namespace DataBaseA
 
         private void button2_Click(object sender, EventArgs e)
         {
+
+            this.Hide();
+
             RegisterForm register = new RegisterForm();
             register.FormClosed += (s, args) => this.Close();
 
             register.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

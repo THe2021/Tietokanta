@@ -7,8 +7,9 @@ C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.csproj.Gen
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.csproj.CoreCompileInputs.cache
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.exe
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.pdb
-C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.exe.config
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.LoginForm.resources
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.WelderInfo.resources
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.RegisterForm.resources
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.FrontPage.resources
+C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.WelderListForm.resources
+C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.exe.config

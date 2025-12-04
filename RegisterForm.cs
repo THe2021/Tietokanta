@@ -61,10 +61,14 @@ namespace DataBaseA
 
                 MessageBox.Show("Registration successful!");
                 // Optionally clear textboxes
-                textBox1.Text = "";
-                textBox2.Text = "";
-                textBox3.Text = "";
-                textBox4.Text = "";
+
+                this.Hide();
+
+                LoginForm loginForm = new LoginForm();
+                loginForm.FormClosed += (s, args) => this.Close(); // Close RegisterForm only after loginForm closes
+                loginForm.Show();
+
+
             }
             catch (Exception ex)
             {
