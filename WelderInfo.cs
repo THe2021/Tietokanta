@@ -7,10 +7,64 @@ namespace DataBaseA
 {
     public partial class WelderInfo : Form
     {
+        private int WelderId;
+
+        // Default constructor (needed for the Add New Welder screen)
         public WelderInfo()
         {
             InitializeComponent();
         }
+
+        // Constructor used when opening a specific welder from the list
+        public WelderInfo(int welderId)
+        {
+            InitializeComponent();
+            WelderId = welderId;
+
+            this.Load += WelderInfo_Load;
+        }
+
+        private void WelderInfo_Load(object sender, EventArgs e)
+        {
+            LoadWelderDetails();
+        }
+
+        private void LoadWelderDetails()
+        {
+            // If WelderInfo was opened with the default constructor,
+            // WelderId will be 0 and we should NOT try to load anything
+            if (WelderId <= 0)
+                return;
+
+            string connString = ConfigurationManager
+                .ConnectionStrings["DataBaseA.Properties.Settings.DatabaseAConnectionString"]
+                .ConnectionString;
+
+            string query = "SELECT * FROM Hitsari WHERE WelderID = @id";
+
+            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@id", WelderId);
+                conn.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    // Fill your form fields with data
+                    textBox1.Text = reader["Name"]?.ToString();
+                    textBox2.Text = reader["ID"]?.ToString().Trim();   // NCHAR trimmed
+                    textBox3.Text = reader["POB"]?.ToString().Trim();
+
+                    if (!reader.IsDBNull(reader.GetOrdinal("DOB")))
+                        textBox4.Text = Convert.ToDateTime(reader["DOB"]).ToString("yyyy-MM-dd");
+
+                    textBox5.Text = reader["Employer"]?.ToString();
+                }
+            }
+        }
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
