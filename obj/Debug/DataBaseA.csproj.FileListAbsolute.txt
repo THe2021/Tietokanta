@@ -13,3 +13,4 @@ C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.RegisterFo
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.FrontPage.resources
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.WelderListForm.resources
 C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.exe.config
+C:\Users\tomi.heinonen\Desktop\DataBase\DataBaseA\obj\Debug\DataBaseA.CertificateForm.resources

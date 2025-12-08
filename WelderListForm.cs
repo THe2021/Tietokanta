@@ -18,7 +18,12 @@ namespace DataBaseA
         {
             LoadWelderData();
 
-            // Add double-click event
+            comboBoxFilter.Items.Clear();
+            comboBoxFilter.Items.Add("Name");
+            comboBoxFilter.Items.Add("Employer");
+            comboBoxFilter.Items.Add("ID");
+            comboBoxFilter.SelectedIndex = 0;
+
             dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
         }
 
@@ -51,6 +56,39 @@ namespace DataBaseA
             }
         }
 
+        private void SearchWelders()
+        {
+            string searchValue = textBoxSearch.Text.Trim();
+            string filter = comboBoxFilter.SelectedItem.ToString();
+
+            string connString = ConfigurationManager
+                .ConnectionStrings["DataBaseA.Properties.Settings.DatabaseAConnectionString"]
+                .ConnectionString;
+
+            string query = "";
+
+            // Build query based on search type
+            if (filter == "Name")
+                query = "SELECT * FROM Hitsari WHERE Name LIKE @param";
+            else if (filter == "Employer")
+                query = "SELECT * FROM Hitsari WHERE Employer LIKE @param";
+            else if (filter == "ID")
+                query = "SELECT * FROM Hitsari WHERE ID LIKE @param";
+
+            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@param", "%" + searchValue + "%");
+
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dataGridView1.DataSource = dt;
+                }
+            }
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // You can leave this empty
@@ -69,10 +107,27 @@ namespace DataBaseA
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // ⚠ If this button is supposed to refresh the table, do THIS:
-            LoadWelderData();
 
-            // If it was supposed to open a NEW form (risky), let me know.
+            // Ensure a row is selected
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a welder first.");
+                return;
+            }
+
+            // Read WelderID from the selected row
+            int welderId = Convert.ToInt32(
+                dataGridView1.SelectedRows[0].Cells["WelderID"].Value
+            );
+
+            // Open the WelderInfo form
+            WelderInfo infoForm = new WelderInfo(welderId);
+
+            // Refresh the list when the details window closes
+            infoForm.FormClosed += (s, args) => LoadWelderData();
+
+            infoForm.Show();
+     
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -125,6 +180,16 @@ namespace DataBaseA
             LoadWelderData();
 
             MessageBox.Show("Welder deleted successfully.");
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            SearchWelders();
+        }
+
+        private void comboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SearchWelders();
         }
     }
 }

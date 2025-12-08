@@ -70,6 +70,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseADataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="CertificateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CertificateForm.Designer.cs">
+      <DependentUpon>CertificateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WelderListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CertificateForm.resx">
+      <DependentUpon>CertificateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WelderListForm.resx">
       <DependentUpon>WelderListForm.cs</DependentUpon>
     </EmbeddedResource>

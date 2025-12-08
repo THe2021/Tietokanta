@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using System.Configuration;
 
 namespace DataBaseA
 {
@@ -13,6 +14,7 @@ namespace DataBaseA
         public WelderInfo()
         {
             InitializeComponent();
+            this.Load += WelderInfo_Load;
         }
 
         // Constructor used when opening a specific welder from the list
@@ -27,6 +29,7 @@ namespace DataBaseA
         private void WelderInfo_Load(object sender, EventArgs e)
         {
             LoadWelderDetails();
+            LoadCertificates(); // ← NEW
         }
 
         private void LoadWelderDetails()
@@ -89,6 +92,13 @@ namespace DataBaseA
                 return; // Stop here — do NOT continue to database insert
             }
 
+            // Parse DOB safely
+            if (!DateTime.TryParse(textBox4.Text, out DateTime dob))
+            {
+                MessageBox.Show("Invalid date format for DOB. Use yyyy-MM-dd.");
+                return;
+            }
+
 
             // Get connection string by name
             string connString = ConfigurationManager
@@ -100,34 +110,101 @@ namespace DataBaseA
                 MessageBox.Show("Connection string not found in App.config!");
                 return;
             }
-            try { 
+
+
+            int newWelderId = 0;
+
+            try
+            {
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
                     conn.Open();
 
-                    using (SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Hitsari (Name, ID, POB, DOB, Employer) VALUES (@Name, @ID, @POB, @DOB, @Employer)", conn))
+                    string sql = @"
+                INSERT INTO dbo.Hitsari (Name, ID, POB, DOB, Employer)
+                OUTPUT INSERTED.WelderID
+                VALUES (@Name, @ID, @POB, @DOB, @Employer)";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
-                        cmd.Parameters.AddWithValue("@Name", textBox1.Text);
-                        cmd.Parameters.AddWithValue("@ID", textBox2.Text);
-                        cmd.Parameters.AddWithValue("@POB", textBox3.Text);
-                        cmd.Parameters.AddWithValue("@DOB", DateTime.Parse(textBox4.Text));
-                        cmd.Parameters.AddWithValue("@Employer", textBox5.Text);
-                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.AddWithValue("@Name", textBox1.Text.Trim());
+                        cmd.Parameters.AddWithValue("@ID", textBox2.Text.Trim());
+                        cmd.Parameters.AddWithValue("@POB", textBox3.Text.Trim());
+                        cmd.Parameters.AddWithValue("@DOB", dob);
+                        cmd.Parameters.AddWithValue("@Employer", textBox5.Text.Trim());
+
+                        // Returns the newly created WelderID
+                        newWelderId = (int)cmd.ExecuteScalar();
                     }
                 }
-            
-
-                this.Hide();
-
-                WelderListForm welderlistform = new WelderListForm();
-                welderlistform.FormClosed += (s, args) => this.Close();
-                welderlistform.Show();
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error inserting welder: " + ex.Message);
+                return;
             }
+
+            // ---------------------------
+            // 4. Open the same form using the correct WelderID
+            // ---------------------------
+            MessageBox.Show("Welder saved successfully!");
+
+            WelderInfo updatedForm = new WelderInfo(newWelderId);
+            updatedForm.Show();
+
+            this.Close(); // close the temp "new welder" form
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (WelderId <= 0)
+            {
+                MessageBox.Show("Please save the welder information before adding certificates.");
+                return;
+            }
+
+            CertificateForm certForm = new CertificateForm(WelderId);
+
+            // Refresh certificate list after closing the certificate window
+            certForm.FormClosed += (s, args) => LoadCertificates();
+
+            certForm.ShowDialog(); // modal, so user must finish adding before returning
+        }
+
+        private void LoadCertificates()
+        {
+            if (WelderId <= 0)
+                return; // No certificates for a new unsaved welder
+
+            string connString = ConfigurationManager
+                .ConnectionStrings["DataBaseA.Properties.Settings.DatabaseAConnectionString"]
+                .ConnectionString;
+
+            string query = @"SELECT 
+                        Id AS CertificateID,
+                        CertificateName,
+                        IssuingAuthority,
+                        IssueDate,
+                        ExpiryDate
+                     FROM Certificates 
+                     WHERE WelderID = @WelderID";
+
+            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@WelderID", WelderId);
+
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dataGridViewCertificates.DataSource = dt;
+                }
+            }
+        }
+
+        private void dataGridViewCertificates_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

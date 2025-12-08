@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -40,7 +41,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dataGridViewCertificates = new System.Windows.Forms.DataGridView();
+            this.databaseADataSet = new DataBaseA.DatabaseADataSet();
+            this.databaseADataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCertificates)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseADataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseADataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -126,9 +134,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(250, 299);
+            this.button1.Location = new System.Drawing.Point(224, 282);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(101, 23);
             this.button1.TabIndex = 10;
             this.button1.Text = "Tallenna";
             this.button1.UseVisualStyleBackColor = true;
@@ -143,11 +151,49 @@
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(224, 311);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(101, 23);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Lisää sertifikaatti";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // dataGridViewCertificates
+            // 
+            this.dataGridViewCertificates.AllowUserToAddRows = false;
+            this.dataGridViewCertificates.AllowUserToDeleteRows = false;
+            this.dataGridViewCertificates.AutoGenerateColumns = true;
+            this.dataGridViewCertificates.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewCertificates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+           // this.dataGridViewCertificates.DataSource = dt;
+            this.dataGridViewCertificates.Location = new System.Drawing.Point(407, 151);
+            this.dataGridViewCertificates.Name = "dataGridViewCertificates";
+            this.dataGridViewCertificates.ReadOnly = true;
+            this.dataGridViewCertificates.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewCertificates.Size = new System.Drawing.Size(426, 150);
+            this.dataGridViewCertificates.TabIndex = 13;
+            this.dataGridViewCertificates.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCertificates_CellContentClick);
+            // 
+            // databaseADataSet
+            // 
+            this.databaseADataSet.DataSetName = "DatabaseADataSet";
+            this.databaseADataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // databaseADataSetBindingSource
+            // 
+            this.databaseADataSetBindingSource.DataSource = this.databaseADataSet;
+            this.databaseADataSetBindingSource.Position = 0;
+            // 
             // WelderInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1023, 710);
+            this.Controls.Add(this.dataGridViewCertificates);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox5);
@@ -163,6 +209,9 @@
             this.Name = "WelderInfo";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCertificates)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseADataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseADataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,6 +231,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dataGridViewCertificates;
+        private System.Windows.Forms.BindingSource databaseADataSetBindingSource;
+        private DatabaseADataSet databaseADataSet;
     }
 }
 
