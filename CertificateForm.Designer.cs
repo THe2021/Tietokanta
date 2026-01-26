@@ -15,18 +15,9 @@
 
         // Additional certificate info
         private System.Windows.Forms.TextBox textBoxProductType;
-        private System.Windows.Forms.TextBox textBoxFillerDesignation;
-        private System.Windows.Forms.TextBox textBoxFillerTradeName;
-        private System.Windows.Forms.TextBox textBoxFillerType;
-        private System.Windows.Forms.ComboBox comboBoxPolarity;
-        private System.Windows.Forms.TextBox textBoxAuxiliaries;
-        private System.Windows.Forms.TextBox textBoxShieldingGas;
         private System.Windows.Forms.NumericUpDown numericMaterialThickness;
-        private System.Windows.Forms.NumericUpDown numericDepositedThickness;
         private System.Windows.Forms.NumericUpDown numericPipeDiameter;
         private System.Windows.Forms.ComboBox comboBoxWeldingPosition;
-        private System.Windows.Forms.TextBox textBoxWeldDetails;
-        private System.Windows.Forms.CheckBox checkBoxIsMultilayer;
 
         // Certification exam info
         private System.Windows.Forms.TextBox textBoxSupervisorName;
@@ -36,9 +27,7 @@
 
         // Multi-value info
         private System.Windows.Forms.CheckedListBox checkedListBoxJointTypes;
-        private System.Windows.Forms.CheckedListBox checkedListBoxProcesses;
         private System.Windows.Forms.CheckedListBox checkedListBoxParentMaterials;
-        private System.Windows.Forms.CheckedListBox checkedListBoxFillerGroups;
 
         // Tests
         private System.Windows.Forms.DataGridView dataGridViewTests;
@@ -70,26 +59,15 @@
             this.dateTimePickerIssue = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerExpiry = new System.Windows.Forms.DateTimePicker();
             this.textBoxProductType = new System.Windows.Forms.TextBox();
-            this.textBoxFillerDesignation = new System.Windows.Forms.TextBox();
-            this.textBoxFillerTradeName = new System.Windows.Forms.TextBox();
-            this.textBoxFillerType = new System.Windows.Forms.TextBox();
-            this.comboBoxPolarity = new System.Windows.Forms.ComboBox();
-            this.textBoxAuxiliaries = new System.Windows.Forms.TextBox();
-            this.textBoxShieldingGas = new System.Windows.Forms.TextBox();
             this.numericMaterialThickness = new System.Windows.Forms.NumericUpDown();
-            this.numericDepositedThickness = new System.Windows.Forms.NumericUpDown();
             this.numericPipeDiameter = new System.Windows.Forms.NumericUpDown();
             this.comboBoxWeldingPosition = new System.Windows.Forms.ComboBox();
-            this.textBoxWeldDetails = new System.Windows.Forms.TextBox();
-            this.checkBoxIsMultilayer = new System.Windows.Forms.CheckBox();
             this.textBoxSupervisorName = new System.Windows.Forms.TextBox();
             this.textBoxExaminationBody = new System.Windows.Forms.TextBox();
             this.textBoxExaminationSignature = new System.Windows.Forms.TextBox();
             this.textBoxRemarks = new System.Windows.Forms.TextBox();
             this.checkedListBoxJointTypes = new System.Windows.Forms.CheckedListBox();
-            this.checkedListBoxProcesses = new System.Windows.Forms.CheckedListBox();
             this.checkedListBoxParentMaterials = new System.Windows.Forms.CheckedListBox();
-            this.checkedListBoxFillerGroups = new System.Windows.Forms.CheckedListBox();
             this.dataGridViewTests = new System.Windows.Forms.DataGridView();
             this.TestType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,30 +80,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
             this.dataGridViewProcesses = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.numericMaterialThickness)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericDepositedThickness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericPipeDiameter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProcesses)).BeginInit();
@@ -166,65 +132,16 @@
             this.textBoxProductType.Size = new System.Drawing.Size(100, 20);
             this.textBoxProductType.TabIndex = 4;
             // 
-            // textBoxFillerDesignation
-            // 
-            this.textBoxFillerDesignation.Location = new System.Drawing.Point(240, 100);
-            this.textBoxFillerDesignation.Name = "textBoxFillerDesignation";
-            this.textBoxFillerDesignation.Size = new System.Drawing.Size(100, 20);
-            this.textBoxFillerDesignation.TabIndex = 5;
-            // 
-            // textBoxFillerTradeName
-            // 
-            this.textBoxFillerTradeName.Location = new System.Drawing.Point(460, 100);
-            this.textBoxFillerTradeName.Name = "textBoxFillerTradeName";
-            this.textBoxFillerTradeName.Size = new System.Drawing.Size(100, 20);
-            this.textBoxFillerTradeName.TabIndex = 6;
-            // 
-            // textBoxFillerType
-            // 
-            this.textBoxFillerType.Location = new System.Drawing.Point(680, 100);
-            this.textBoxFillerType.Name = "textBoxFillerType";
-            this.textBoxFillerType.Size = new System.Drawing.Size(100, 20);
-            this.textBoxFillerType.TabIndex = 7;
-            // 
-            // comboBoxPolarity
-            // 
-            this.comboBoxPolarity.Location = new System.Drawing.Point(20, 140);
-            this.comboBoxPolarity.Name = "comboBoxPolarity";
-            this.comboBoxPolarity.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxPolarity.TabIndex = 8;
-            // 
-            // textBoxAuxiliaries
-            // 
-            this.textBoxAuxiliaries.Location = new System.Drawing.Point(240, 140);
-            this.textBoxAuxiliaries.Name = "textBoxAuxiliaries";
-            this.textBoxAuxiliaries.Size = new System.Drawing.Size(100, 20);
-            this.textBoxAuxiliaries.TabIndex = 9;
-            // 
-            // textBoxShieldingGas
-            // 
-            this.textBoxShieldingGas.Location = new System.Drawing.Point(460, 140);
-            this.textBoxShieldingGas.Name = "textBoxShieldingGas";
-            this.textBoxShieldingGas.Size = new System.Drawing.Size(100, 20);
-            this.textBoxShieldingGas.TabIndex = 10;
-            // 
             // numericMaterialThickness
             // 
-            this.numericMaterialThickness.Location = new System.Drawing.Point(20, 180);
+            this.numericMaterialThickness.Location = new System.Drawing.Point(20, 143);
             this.numericMaterialThickness.Name = "numericMaterialThickness";
             this.numericMaterialThickness.Size = new System.Drawing.Size(120, 20);
             this.numericMaterialThickness.TabIndex = 11;
             // 
-            // numericDepositedThickness
-            // 
-            this.numericDepositedThickness.Location = new System.Drawing.Point(240, 180);
-            this.numericDepositedThickness.Name = "numericDepositedThickness";
-            this.numericDepositedThickness.Size = new System.Drawing.Size(120, 20);
-            this.numericDepositedThickness.TabIndex = 12;
-            // 
             // numericPipeDiameter
             // 
-            this.numericPipeDiameter.Location = new System.Drawing.Point(460, 180);
+            this.numericPipeDiameter.Location = new System.Drawing.Point(20, 183);
             this.numericPipeDiameter.Name = "numericPipeDiameter";
             this.numericPipeDiameter.Size = new System.Drawing.Size(120, 20);
             this.numericPipeDiameter.TabIndex = 13;
@@ -235,20 +152,6 @@
             this.comboBoxWeldingPosition.Name = "comboBoxWeldingPosition";
             this.comboBoxWeldingPosition.Size = new System.Drawing.Size(121, 21);
             this.comboBoxWeldingPosition.TabIndex = 14;
-            // 
-            // textBoxWeldDetails
-            // 
-            this.textBoxWeldDetails.Location = new System.Drawing.Point(240, 220);
-            this.textBoxWeldDetails.Name = "textBoxWeldDetails";
-            this.textBoxWeldDetails.Size = new System.Drawing.Size(100, 20);
-            this.textBoxWeldDetails.TabIndex = 15;
-            // 
-            // checkBoxIsMultilayer
-            // 
-            this.checkBoxIsMultilayer.Location = new System.Drawing.Point(460, 220);
-            this.checkBoxIsMultilayer.Name = "checkBoxIsMultilayer";
-            this.checkBoxIsMultilayer.Size = new System.Drawing.Size(104, 24);
-            this.checkBoxIsMultilayer.TabIndex = 16;
             // 
             // textBoxSupervisorName
             // 
@@ -286,29 +189,13 @@
             this.checkedListBoxJointTypes.Size = new System.Drawing.Size(120, 79);
             this.checkedListBoxJointTypes.TabIndex = 21;
             // 
-            // checkedListBoxProcesses
-            // 
-            this.checkedListBoxProcesses.CheckOnClick = true;
-            this.checkedListBoxProcesses.Location = new System.Drawing.Point(160, 349);
-            this.checkedListBoxProcesses.Name = "checkedListBoxProcesses";
-            this.checkedListBoxProcesses.Size = new System.Drawing.Size(120, 79);
-            this.checkedListBoxProcesses.TabIndex = 22;
-            // 
             // checkedListBoxParentMaterials
             // 
             this.checkedListBoxParentMaterials.CheckOnClick = true;
-            this.checkedListBoxParentMaterials.Location = new System.Drawing.Point(300, 349);
+            this.checkedListBoxParentMaterials.Location = new System.Drawing.Point(184, 349);
             this.checkedListBoxParentMaterials.Name = "checkedListBoxParentMaterials";
             this.checkedListBoxParentMaterials.Size = new System.Drawing.Size(120, 79);
             this.checkedListBoxParentMaterials.TabIndex = 23;
-            // 
-            // checkedListBoxFillerGroups
-            // 
-            this.checkedListBoxFillerGroups.CheckOnClick = true;
-            this.checkedListBoxFillerGroups.Location = new System.Drawing.Point(440, 349);
-            this.checkedListBoxFillerGroups.Name = "checkedListBoxFillerGroups";
-            this.checkedListBoxFillerGroups.Size = new System.Drawing.Size(120, 79);
-            this.checkedListBoxFillerGroups.TabIndex = 24;
             // 
             // dataGridViewTests
             // 
@@ -403,55 +290,19 @@
             this.label5.TabIndex = 31;
             this.label5.Text = "Product type";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(23, 123);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 13);
-            this.label6.TabIndex = 32;
-            this.label6.Text = "Polarity";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(243, 124);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 13);
-            this.label7.TabIndex = 33;
-            this.label7.Text = "Auxillaries";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(459, 126);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 13);
-            this.label8.TabIndex = 34;
-            this.label8.Text = "Shielding gas";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(21, 166);
+            this.label9.Location = new System.Drawing.Point(21, 127);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(92, 13);
             this.label9.TabIndex = 35;
             this.label9.Text = "Material thickness";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(237, 166);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(103, 13);
-            this.label10.TabIndex = 36;
-            this.label10.Text = "Deposited thickness";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(461, 165);
+            this.label11.Location = new System.Drawing.Point(23, 167);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(71, 13);
             this.label11.TabIndex = 37;
@@ -465,24 +316,6 @@
             this.label12.Size = new System.Drawing.Size(85, 13);
             this.label12.TabIndex = 38;
             this.label12.Text = "Welding position";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(242, 207);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(65, 13);
-            this.label13.TabIndex = 39;
-            this.label13.Text = "Weld details";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(459, 206);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(51, 13);
-            this.label14.TabIndex = 40;
-            this.label14.Text = "Multilayer";
             // 
             // label15
             // 
@@ -529,32 +362,14 @@
             this.label19.TabIndex = 45;
             this.label19.Text = "Joint type";
             // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(157, 333);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(56, 13);
-            this.label20.TabIndex = 46;
-            this.label20.Text = "Processes";
-            // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(297, 333);
+            this.label21.Location = new System.Drawing.Point(181, 333);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(82, 13);
             this.label21.TabIndex = 47;
             this.label21.Text = "Parent materials";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(437, 333);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(105, 13);
-            this.label22.TabIndex = 48;
-            this.label22.Text = "Filler Material Groups";
             // 
             // label23
             // 
@@ -565,67 +380,29 @@
             this.label23.TabIndex = 49;
             this.label23.Text = "Tests";
             // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(242, 86);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(85, 13);
-            this.label24.TabIndex = 50;
-            this.label24.Text = "Filler designation";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(458, 84);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(84, 13);
-            this.label25.TabIndex = 51;
-            this.label25.Text = "Filler trade name";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(677, 86);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(51, 13);
-            this.label26.TabIndex = 52;
-            this.label26.Text = "Filler type";
-            // 
             // dataGridViewProcesses
             // 
             this.dataGridViewProcesses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewProcesses.Location = new System.Drawing.Point(22, 446);
             this.dataGridViewProcesses.Name = "dataGridViewProcesses";
             this.dataGridViewProcesses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewProcesses.Size = new System.Drawing.Size(598, 105);
+            this.dataGridViewProcesses.Size = new System.Drawing.Size(1015, 105);
             this.dataGridViewProcesses.TabIndex = 53;
             // 
             // CertificateForm
             // 
-            this.ClientSize = new System.Drawing.Size(800, 786);
+            this.ClientSize = new System.Drawing.Size(1062, 786);
             this.Controls.Add(this.dataGridViewProcesses);
-            this.Controls.Add(this.label26);
-            this.Controls.Add(this.label25);
-            this.Controls.Add(this.label24);
             this.Controls.Add(this.label23);
-            this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.label20);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -636,32 +413,20 @@
             this.Controls.Add(this.dateTimePickerIssue);
             this.Controls.Add(this.dateTimePickerExpiry);
             this.Controls.Add(this.textBoxProductType);
-            this.Controls.Add(this.textBoxFillerDesignation);
-            this.Controls.Add(this.textBoxFillerTradeName);
-            this.Controls.Add(this.textBoxFillerType);
-            this.Controls.Add(this.comboBoxPolarity);
-            this.Controls.Add(this.textBoxAuxiliaries);
-            this.Controls.Add(this.textBoxShieldingGas);
             this.Controls.Add(this.numericMaterialThickness);
-            this.Controls.Add(this.numericDepositedThickness);
             this.Controls.Add(this.numericPipeDiameter);
             this.Controls.Add(this.comboBoxWeldingPosition);
-            this.Controls.Add(this.textBoxWeldDetails);
-            this.Controls.Add(this.checkBoxIsMultilayer);
             this.Controls.Add(this.textBoxSupervisorName);
             this.Controls.Add(this.textBoxExaminationBody);
             this.Controls.Add(this.textBoxExaminationSignature);
             this.Controls.Add(this.textBoxRemarks);
             this.Controls.Add(this.checkedListBoxJointTypes);
-            this.Controls.Add(this.checkedListBoxProcesses);
             this.Controls.Add(this.checkedListBoxParentMaterials);
-            this.Controls.Add(this.checkedListBoxFillerGroups);
             this.Controls.Add(this.dataGridViewTests);
             this.Controls.Add(this.buttonSave);
             this.Name = "CertificateForm";
             this.Text = "Add Certificate";
             ((System.ComponentModel.ISupportInitialize)(this.numericMaterialThickness)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericDepositedThickness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericPipeDiameter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTests)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProcesses)).EndInit();
@@ -682,27 +447,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label26;
         private System.Windows.Forms.DataGridViewTextBoxColumn TestType;
         private System.Windows.Forms.DataGridViewTextBoxColumn Result;
         private System.Windows.Forms.DataGridViewTextBoxColumn InspectorName;
