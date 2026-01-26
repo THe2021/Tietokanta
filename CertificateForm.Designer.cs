@@ -123,10 +123,12 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
+            this.dataGridViewProcesses = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.numericMaterialThickness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericDepositedThickness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericPipeDiameter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTests)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProcesses)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxCertName
@@ -279,7 +281,7 @@
             // checkedListBoxJointTypes
             // 
             this.checkedListBoxJointTypes.CheckOnClick = true;
-            this.checkedListBoxJointTypes.Location = new System.Drawing.Point(20, 380);
+            this.checkedListBoxJointTypes.Location = new System.Drawing.Point(22, 349);
             this.checkedListBoxJointTypes.Name = "checkedListBoxJointTypes";
             this.checkedListBoxJointTypes.Size = new System.Drawing.Size(120, 79);
             this.checkedListBoxJointTypes.TabIndex = 21;
@@ -287,7 +289,7 @@
             // checkedListBoxProcesses
             // 
             this.checkedListBoxProcesses.CheckOnClick = true;
-            this.checkedListBoxProcesses.Location = new System.Drawing.Point(160, 380);
+            this.checkedListBoxProcesses.Location = new System.Drawing.Point(160, 349);
             this.checkedListBoxProcesses.Name = "checkedListBoxProcesses";
             this.checkedListBoxProcesses.Size = new System.Drawing.Size(120, 79);
             this.checkedListBoxProcesses.TabIndex = 22;
@@ -295,7 +297,7 @@
             // checkedListBoxParentMaterials
             // 
             this.checkedListBoxParentMaterials.CheckOnClick = true;
-            this.checkedListBoxParentMaterials.Location = new System.Drawing.Point(300, 380);
+            this.checkedListBoxParentMaterials.Location = new System.Drawing.Point(300, 349);
             this.checkedListBoxParentMaterials.Name = "checkedListBoxParentMaterials";
             this.checkedListBoxParentMaterials.Size = new System.Drawing.Size(120, 79);
             this.checkedListBoxParentMaterials.TabIndex = 23;
@@ -303,7 +305,7 @@
             // checkedListBoxFillerGroups
             // 
             this.checkedListBoxFillerGroups.CheckOnClick = true;
-            this.checkedListBoxFillerGroups.Location = new System.Drawing.Point(440, 380);
+            this.checkedListBoxFillerGroups.Location = new System.Drawing.Point(440, 349);
             this.checkedListBoxFillerGroups.Name = "checkedListBoxFillerGroups";
             this.checkedListBoxFillerGroups.Size = new System.Drawing.Size(120, 79);
             this.checkedListBoxFillerGroups.TabIndex = 24;
@@ -316,7 +318,7 @@
             this.InspectorName,
             this.TestDate,
             this.Notes});
-            this.dataGridViewTests.Location = new System.Drawing.Point(20, 480);
+            this.dataGridViewTests.Location = new System.Drawing.Point(20, 570);
             this.dataGridViewTests.Name = "dataGridViewTests";
             this.dataGridViewTests.Size = new System.Drawing.Size(600, 150);
             this.dataGridViewTests.TabIndex = 25;
@@ -348,7 +350,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(20, 650);
+            this.buttonSave.Location = new System.Drawing.Point(20, 726);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(100, 30);
             this.buttonSave.TabIndex = 26;
@@ -521,7 +523,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(23, 364);
+            this.label19.Location = new System.Drawing.Point(22, 333);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(52, 13);
             this.label19.TabIndex = 45;
@@ -530,7 +532,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(157, 364);
+            this.label20.Location = new System.Drawing.Point(157, 333);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(56, 13);
             this.label20.TabIndex = 46;
@@ -539,7 +541,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(297, 364);
+            this.label21.Location = new System.Drawing.Point(297, 333);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(82, 13);
             this.label21.TabIndex = 47;
@@ -548,7 +550,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(437, 364);
+            this.label22.Location = new System.Drawing.Point(437, 333);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(105, 13);
             this.label22.TabIndex = 48;
@@ -557,7 +559,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(23, 464);
+            this.label23.Location = new System.Drawing.Point(23, 554);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(33, 13);
             this.label23.TabIndex = 49;
@@ -590,9 +592,19 @@
             this.label26.TabIndex = 52;
             this.label26.Text = "Filler type";
             // 
+            // dataGridViewProcesses
+            // 
+            this.dataGridViewProcesses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewProcesses.Location = new System.Drawing.Point(22, 446);
+            this.dataGridViewProcesses.Name = "dataGridViewProcesses";
+            this.dataGridViewProcesses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewProcesses.Size = new System.Drawing.Size(598, 105);
+            this.dataGridViewProcesses.TabIndex = 53;
+            // 
             // CertificateForm
             // 
-            this.ClientSize = new System.Drawing.Size(800, 700);
+            this.ClientSize = new System.Drawing.Size(800, 786);
+            this.Controls.Add(this.dataGridViewProcesses);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.label24);
@@ -652,6 +664,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericDepositedThickness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericPipeDiameter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTests)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProcesses)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -695,5 +708,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn InspectorName;
         private System.Windows.Forms.DataGridViewTextBoxColumn TestDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Notes;
+        private System.Windows.Forms.DataGridView dataGridViewProcesses;
     }
 }

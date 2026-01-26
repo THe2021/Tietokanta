@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DataBaseA
@@ -26,24 +27,18 @@ namespace DataBaseA
 
             // Welding current / polarity
             comboBoxPolarity.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxPolarity.Items.Clear();
             comboBoxPolarity.Items.AddRange(new string[]
             {
-        "AC",
-        "DC+",
-        "DC-"
+        "AC", "DC+", "DC-"
             });
 
             // Welding positions (EN ISO standards commonly used)
             comboBoxWeldingPosition.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxWeldingPosition.Items.Clear();
             comboBoxWeldingPosition.Items.AddRange(new string[]
             {
-        "PA",
-        "PB",
-        "PC",
-        "PD",
-        "PE",
-        "PF",
-        "PG"
+        "PA", "PB", "PC", "PD", "PE", "PF", "PG"
             });
 
             // -----------------------------
@@ -51,31 +46,21 @@ namespace DataBaseA
             // -----------------------------
 
             // Joint types
+            checkedListBoxJointTypes.Items.Clear();
             checkedListBoxJointTypes.Items.AddRange(new string[]
             {
-        "BW",
-        "FW"
-            });
-
-            // Welding processes (ISO 4063)
-            checkedListBoxProcesses.Items.AddRange(new string[]
-            {
-        "111",
-        "131",
-        "135",
-        "136",
-        "141",
-        "121"
+        "BW", "FW"
             });
 
             // Parent materials (ISO/TR 15608 – steels only)
+            checkedListBoxParentMaterials.Items.Clear();
             checkedListBoxParentMaterials.Items.AddRange(new string[]
             {
-        "1", "2", "3", "4", "5", "6",
-        "7", "8", "9", "10", "11"
+        "1","2","3","4","5","6","7","8","9","10","11"
             });
 
             // Filler material groups (EN ISO 9606-1)
+            checkedListBoxFillerGroups.Items.Clear();
             checkedListBoxFillerGroups.Items.AddRange(new string[]
             {
         "FM1", "FM2", "FM3", "FM4", "FM5", "FM6"
@@ -87,46 +72,125 @@ namespace DataBaseA
 
             dataGridViewTests.AllowUserToAddRows = true;
             dataGridViewTests.AutoGenerateColumns = false;
+            dataGridViewTests.Columns.Clear();
 
-            // Optional: make TestType and Result dropdowns
+            // Test type dropdown
             var testTypeColumn = new DataGridViewComboBoxColumn
             {
                 Name = "TestType",
                 HeaderText = "Test Type",
                 DataSource = new string[] { "VT", "RT", "UT", "MT", "PT", "BT", "FT" }
             };
+            dataGridViewTests.Columns.Add(testTypeColumn);
 
+            // Result dropdown
             var resultColumn = new DataGridViewComboBoxColumn
             {
                 Name = "Result",
                 HeaderText = "Result",
                 DataSource = new string[] { "Pass", "Fail" }
             };
-
-            // Clear auto-added columns and re-add clean ones
-            dataGridViewTests.Columns.Clear();
-            dataGridViewTests.Columns.Add(testTypeColumn);
             dataGridViewTests.Columns.Add(resultColumn);
-            dataGridViewTests.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "InspectorName",
-                HeaderText = "Inspector Name"
-            });
 
-            dataGridViewTests.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "TestDate",
-                HeaderText = "Test Date"
-            });
+            // Other columns
+            dataGridViewTests.Columns.Add(new DataGridViewTextBoxColumn { Name = "InspectorName", HeaderText = "Inspector Name" });
+            dataGridViewTests.Columns.Add(new DataGridViewTextBoxColumn { Name = "TestDate", HeaderText = "Test Date" });
+            dataGridViewTests.Columns.Add(new DataGridViewTextBoxColumn { Name = "Notes", HeaderText = "Notes" });
 
-            dataGridViewTests.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "Notes",
-                HeaderText = "Notes"
-            });
-
-            // Optional: date formatting
             dataGridViewTests.Columns["TestDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
+
+            // -----------------------------
+            // DataGridView for processes
+            // -----------------------------
+
+            dataGridViewProcesses.AllowUserToAddRows = true;
+            dataGridViewProcesses.AutoGenerateColumns = false;
+            dataGridViewProcesses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewProcesses.Columns.Clear();
+
+            // Process code
+            var processCodeColumn = new DataGridViewComboBoxColumn
+            {
+                Name = "ProcessCode",
+                HeaderText = "Process",
+                DataSource = new string[] { "111", "131", "135", "136", "141", "121" }
+            };
+            dataGridViewProcesses.Columns.Add(processCodeColumn);
+
+            // Pass type
+            var passTypeColumn = new DataGridViewComboBoxColumn
+            {
+                Name = "PassType",
+                HeaderText = "Pass Type",
+                DataSource = new string[] { "Root", "Fill", "Cap" }
+            };
+            dataGridViewProcesses.Columns.Add(passTypeColumn);
+
+            // Filler material designation
+            dataGridViewProcesses.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "FillerMaterialDesignation",
+                HeaderText = "Filler Designation"
+            });
+
+            // Filler trade name
+            dataGridViewProcesses.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "FillerMaterialTradeName",
+                HeaderText = "Filler Trade Name"
+            });
+
+            // Filler type
+            dataGridViewProcesses.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "FillerMaterialType",
+                HeaderText = "Filler Type"
+            });
+
+            // Polarity
+            var polarityColumn = new DataGridViewComboBoxColumn
+            {
+                Name = "Polarity",
+                HeaderText = "Polarity",
+                DataSource = new string[] { "AC", "DC+", "DC-" }
+            };
+            dataGridViewProcesses.Columns.Add(polarityColumn);
+
+            // Auxiliaries
+            dataGridViewProcesses.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "Auxiliaries",
+                HeaderText = "Auxiliaries"
+            });
+
+            // Shielding gas
+            dataGridViewProcesses.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "ShieldingGas",
+                HeaderText = "Shielding Gas"
+            });
+
+            // Deposited thickness
+            dataGridViewProcesses.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "DepositedThickness",
+                HeaderText = "Deposited Thickness"
+            });
+
+            // Weld details
+            dataGridViewProcesses.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "WeldDetails",
+                HeaderText = "Weld Details"
+            });
+
+            // Is multilayer
+            var multilayerColumn = new DataGridViewCheckBoxColumn
+            {
+                Name = "IsMultilayer",
+                HeaderText = "Multilayer?"
+            };
+            dataGridViewProcesses.Columns.Add(multilayerColumn);
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -157,9 +221,21 @@ namespace DataBaseA
                 return;
             }
 
+
+
+            bool hasProcess = dataGridViewProcesses.Rows
+                .Cast<DataGridViewRow>()
+                .Any(r => !r.IsNewRow &&
+                  !string.IsNullOrWhiteSpace(r.Cells["ProcessCode"].Value?.ToString()));
+
+            if (!hasProcess)
+            {
+                MessageBox.Show("At least one welding process must be defined.");
+                return;
+            }
             string connString = ConfigurationManager
-                .ConnectionStrings["DataBaseA.Properties.Settings.DatabaseAConnectionString"]
-                .ConnectionString;
+            .ConnectionStrings["DataBaseA.Properties.Settings.DatabaseAConnectionString"]
+            .ConnectionString;
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -211,51 +287,57 @@ namespace DataBaseA
 
                     int certificateId = Convert.ToInt32(cmdCert.ExecuteScalar());
 
-                    // 4. Insert JointTypes
-                    foreach (var item in checkedListBoxJointTypes.CheckedItems)
+                    // 6️⃣ Insert each process from dataGridViewProcesses into CertificateProcessDetails
+                    foreach (DataGridViewRow row in dataGridViewProcesses.Rows)
                     {
-                        SqlCommand cmdJoint = new SqlCommand(
-                            "INSERT INTO CertificateJointTypes (CertificateId, JointType) VALUES (@CertId, @JointType)",
-                            conn, transaction);
-                        cmdJoint.Parameters.AddWithValue("@CertId", certificateId);
-                        cmdJoint.Parameters.AddWithValue("@JointType", item.ToString());
-                        cmdJoint.ExecuteNonQuery();
-                    }
+                        if (row.IsNewRow) continue;
 
-                    // 5. Insert Processes
-                    foreach (var item in checkedListBoxProcesses.CheckedItems)
-                    {
+                        var processCode = row.Cells["ProcessCode"].Value?.ToString();
+                        if (string.IsNullOrWhiteSpace(processCode)) continue; // skip incomplete row
+
+                        var passType = row.Cells["PassType"].Value?.ToString() ?? "";
+                        var fillerDesignation = row.Cells["FillerMaterialDesignation"].Value?.ToString() ?? "";
+                        var fillerTradeName = row.Cells["FillerMaterialTradeName"].Value?.ToString() ?? "";
+                        var fillerType = row.Cells["FillerMaterialType"].Value?.ToString() ?? "";
+                        var polarity = row.Cells["Polarity"].Value?.ToString() ?? "";
+                        var auxiliaries = row.Cells["Auxiliaries"].Value?.ToString() ?? "";
+                        var shieldingGas = row.Cells["ShieldingGas"].Value?.ToString() ?? "";
+                        var depositedThickness = row.Cells["DepositedThickness"].Value != null
+                            ? Convert.ToDecimal(row.Cells["DepositedThickness"].Value)
+                            : 0m;
+                        var weldDetails = row.Cells["WeldDetails"].Value?.ToString() ?? "";
+                        var isMultilayer = row.Cells["IsMultilayer"].Value != null && (bool)row.Cells["IsMultilayer"].Value;
+
                         SqlCommand cmdProcess = new SqlCommand(
-                            "INSERT INTO CertificateProcesses (CertificateId, ProcessName) VALUES (@CertId, @Process)",
+                            @"INSERT INTO CertificateProcessDetails
+                      (CertificateId, ProcessCode, PassType,
+                       FillerMaterialDesignation, FillerMaterialTradeName, FillerMaterialType,
+                       TypeOfCurrentPolarity, Auxiliaries, ShieldingGas,
+                       DepositedThickness, WeldDetails, IsMultilayer)
+                      VALUES
+                      (@CertId, @ProcessCode, @PassType,
+                       @FillerDesignation, @FillerTradeName, @FillerType,
+                       @Polarity, @Auxiliaries, @Gas,
+                       @DepositedThickness, @WeldDetails, @IsMultilayer)",
                             conn, transaction);
+
                         cmdProcess.Parameters.AddWithValue("@CertId", certificateId);
-                        cmdProcess.Parameters.AddWithValue("@Process", item.ToString());
+                        cmdProcess.Parameters.AddWithValue("@ProcessCode", processCode);
+                        cmdProcess.Parameters.AddWithValue("@PassType", passType);
+                        cmdProcess.Parameters.AddWithValue("@FillerDesignation", fillerDesignation);
+                        cmdProcess.Parameters.AddWithValue("@FillerTradeName", fillerTradeName);
+                        cmdProcess.Parameters.AddWithValue("@FillerType", fillerType);
+                        cmdProcess.Parameters.AddWithValue("@Polarity", polarity);
+                        cmdProcess.Parameters.AddWithValue("@Auxiliaries", auxiliaries);
+                        cmdProcess.Parameters.AddWithValue("@Gas", shieldingGas);
+                        cmdProcess.Parameters.AddWithValue("@DepositedThickness", depositedThickness);
+                        cmdProcess.Parameters.AddWithValue("@WeldDetails", weldDetails);
+                        cmdProcess.Parameters.AddWithValue("@IsMultilayer", isMultilayer);
+
                         cmdProcess.ExecuteNonQuery();
                     }
 
-                    // 6. Insert Parent Materials
-                    foreach (var item in checkedListBoxParentMaterials.CheckedItems)
-                    {
-                        SqlCommand cmdParent = new SqlCommand(
-                            "INSERT INTO CertificateParentMaterials (CertificateId, MaterialGroup) VALUES (@CertId, @MatGroup)",
-                            conn, transaction);
-                        cmdParent.Parameters.AddWithValue("@CertId", certificateId);
-                        cmdParent.Parameters.AddWithValue("@MatGroup", item.ToString());
-                        cmdParent.ExecuteNonQuery();
-                    }
-
-                    // 7. Insert Filler Material Groups
-                    foreach (var item in checkedListBoxFillerGroups.CheckedItems)
-                    {
-                        SqlCommand cmdFiller = new SqlCommand(
-                            "INSERT INTO CertificateFillerMaterialGroups (CertificateId, FillerGroup) VALUES (@CertId, @FillerGroup)",
-                            conn, transaction);
-                        cmdFiller.Parameters.AddWithValue("@CertId", certificateId);
-                        cmdFiller.Parameters.AddWithValue("@FillerGroup", item.ToString());
-                        cmdFiller.ExecuteNonQuery();
-                    }
-
-                    // 8. Insert Tests from DataGridView
+                    // 7️⃣ Insert certificate tests (existing logic)
                     foreach (DataGridViewRow row in dataGridViewTests.Rows)
                     {
                         if (row.IsNewRow) continue;
@@ -271,9 +353,10 @@ namespace DataBaseA
 
                         SqlCommand cmdTest = new SqlCommand(
                             @"INSERT INTO CertificateTests
-                              (CertificateId, TestType, Result, Notes, InspectorName, TestDate)
-                              VALUES (@CertId, @TestType, @Result, @Notes, @Inspector, @TestDate)",
+                      (CertificateId, TestType, Result, Notes, InspectorName, TestDate)
+                      VALUES (@CertId, @TestType, @Result, @Notes, @Inspector, @TestDate)",
                             conn, transaction);
+
                         cmdTest.Parameters.AddWithValue("@CertId", certificateId);
                         cmdTest.Parameters.AddWithValue("@TestType", testType);
                         cmdTest.Parameters.AddWithValue("@Result", result);
@@ -284,7 +367,7 @@ namespace DataBaseA
                         cmdTest.ExecuteNonQuery();
                     }
 
-                    // Commit transaction
+                    // 8️⃣ Commit transaction
                     transaction.Commit();
                     MessageBox.Show("Certificate added successfully.");
                     this.Close();
@@ -296,7 +379,7 @@ namespace DataBaseA
                 }
             }
         }
-
+        
         private void label1_Click(object sender, EventArgs e)
         {
 
