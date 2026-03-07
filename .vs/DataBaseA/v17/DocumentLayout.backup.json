@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{84B38265-8217-4A29-BE76-A7D82B853B91}|DataBaseA.csproj|C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\certificateform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{84B38265-8217-4A29-BE76-A7D82B853B91}|DataBaseA.csproj|solutionrelative:certificateform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{84B38265-8217-4A29-BE76-A7D82B853B91}|DataBaseA.csproj|c:\\users\\tomi.heinonen\\desktop\\database\\databasea\\services\\pdfservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84B38265-8217-4A29-BE76-A7D82B853B91}|DataBaseA.csproj|solutionrelative:services\\pdfservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84B38265-8217-4A29-BE76-A7D82B853B91}|DataBaseA.csproj|C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\certificateform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84B38265-8217-4A29-BE76-A7D82B853B91}|DataBaseA.csproj|solutionrelative:certificateform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{84B38265-8217-4A29-BE76-A7D82B853B91}|DataBaseA.csproj|c:\\users\\tomi.heinonen\\desktop\\database\\databasea\\pdf\\certificatepdfdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84B38265-8217-4A29-BE76-A7D82B853B91}|DataBaseA.csproj|solutionrelative:pdf\\certificatepdfdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84B38265-8217-4A29-BE76-A7D82B853B91}|DataBaseA.csproj|c:\\users\\tomi.heinonen\\desktop\\database\\databasea\\certificateform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84B38265-8217-4A29-BE76-A7D82B853B91}|DataBaseA.csproj|solutionrelative:certificateform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{84B38265-8217-4A29-BE76-A7D82B853B91}|DataBaseA.csproj|c:\\users\\tomi.heinonen\\desktop\\database\\databasea\\services\\certificateservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84B38265-8217-4A29-BE76-A7D82B853B91}|DataBaseA.csproj|solutionrelative:services\\certificateservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84B38265-8217-4A29-BE76-A7D82B853B91}|DataBaseA.csproj|c:\\users\\tomi.heinonen\\desktop\\database\\databasea\\data\\certificaterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84B38265-8217-4A29-BE76-A7D82B853B91}|DataBaseA.csproj|solutionrelative:data\\certificaterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84B38265-8217-4A29-BE76-A7D82B853B91}|DataBaseA.csproj|C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\forms\\welderinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84B38265-8217-4A29-BE76-A7D82B853B91}|DataBaseA.csproj|solutionrelative:forms\\welderinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CertificateForm.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\CertificateForm.Designer.cs",
-              "RelativeDocumentMoniker": "CertificateForm.Designer.cs",
-              "ToolTip": "C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\CertificateForm.Designer.cs",
-              "RelativeToolTip": "CertificateForm.Designer.cs",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAowL8AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "PdfService.cs",
+              "DocumentMoniker": "C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\Services\\PdfService.cs",
+              "RelativeDocumentMoniker": "Services\\PdfService.cs",
+              "ToolTip": "C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\Services\\PdfService.cs",
+              "RelativeToolTip": "Services\\PdfService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-26T08:02:13.684Z",
+              "WhenOpened": "2026-03-07T10:18:46.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CertificatePdfDocument.cs",
+              "DocumentMoniker": "C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\Pdf\\CertificatePdfDocument.cs",
+              "RelativeDocumentMoniker": "Pdf\\CertificatePdfDocument.cs",
+              "ToolTip": "C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\Pdf\\CertificatePdfDocument.cs",
+              "RelativeToolTip": "Pdf\\CertificatePdfDocument.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T10:06:47.198Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "CertificateForm.cs",
-              "DocumentMoniker": "C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\CertificateForm.cs",
-              "RelativeDocumentMoniker": "CertificateForm.cs",
-              "ToolTip": "C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\CertificateForm.cs",
-              "RelativeToolTip": "CertificateForm.cs",
-              "ViewState": "AgIAAPgAAAAAAAAAAAAIwAQBAABHAAAAAAAAAA==",
+              "Title": "CertificateServices.cs",
+              "DocumentMoniker": "C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\Services\\CertificateServices.cs",
+              "RelativeDocumentMoniker": "Services\\CertificateServices.cs",
+              "ToolTip": "C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\Services\\CertificateServices.cs",
+              "RelativeToolTip": "Services\\CertificateServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-26T06:16:39.451Z",
+              "WhenOpened": "2026-03-07T09:56:10.329Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CertificateForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\CertificateForm.cs",
-              "RelativeDocumentMoniker": "CertificateForm.cs",
-              "ToolTip": "C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\CertificateForm.cs [Design]",
-              "RelativeToolTip": "CertificateForm.cs [Design]",
+              "DocumentIndex": 3,
+              "Title": "CertificateRepository.cs",
+              "DocumentMoniker": "C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\Data\\CertificateRepository.cs",
+              "RelativeDocumentMoniker": "Data\\CertificateRepository.cs",
+              "ToolTip": "C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\Data\\CertificateRepository.cs",
+              "RelativeToolTip": "Data\\CertificateRepository.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowDoAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-26T06:13:27.769Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-02-15T12:52:58.221Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WelderInfo.cs",
+              "DocumentMoniker": "C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\Forms\\WelderInfo.cs",
+              "RelativeDocumentMoniker": "Forms\\WelderInfo.cs",
+              "ToolTip": "C:\\Users\\tomi.heinonen\\Desktop\\DataBase\\DataBaseA\\Forms\\WelderInfo.cs",
+              "RelativeToolTip": "Forms\\WelderInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T12:34:31.591Z"
             }
           ]
         }

@@ -27,6 +27,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,9 +53,16 @@
     <StartupObject>DataBaseA.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="QuestPDF, Version=2026.2.0.0, Culture=neutral, PublicKeyToken=0f3c2b2315ff52c8, processorArchitecture=MSIL">
+      <HintPath>packages\QuestPDF.2026.2.0\lib\netstandard2.0\QuestPDF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,60 +79,66 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseADataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="CertificateForm.cs">
+    <Compile Include="Data\CertificateRepository.cs" />
+    <Compile Include="Forms\CertificateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CertificateForm.Designer.cs">
+    <Compile Include="Forms\CertificateForm.Designer.cs">
       <DependentUpon>CertificateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WelderListForm.cs">
+    <Compile Include="Forms\WelderListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WelderListForm.Designer.cs">
+    <Compile Include="Forms\WelderListForm.Designer.cs">
       <DependentUpon>WelderListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrontPage.cs">
+    <Compile Include="Forms\FrontPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrontPage.Designer.cs">
+    <Compile Include="Forms\FrontPage.Designer.cs">
       <DependentUpon>FrontPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegisterForm.cs">
+    <Compile Include="Forms\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegisterForm.Designer.cs">
+    <Compile Include="Forms\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WelderInfo.cs">
+    <Compile Include="Forms\WelderInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WelderInfo.Designer.cs">
+    <Compile Include="Forms\WelderInfo.Designer.cs">
       <DependentUpon>WelderInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\CertificateModel.cs" />
+    <Compile Include="Models\ProcessModel.cs" />
+    <Compile Include="Pdf\CertificatePdfDocument.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CertificateForm.resx">
+    <Compile Include="Services\CertificateServices.cs" />
+    <Compile Include="Services\PdfService.cs" />
+    <EmbeddedResource Include="Forms\CertificateForm.resx">
       <DependentUpon>CertificateForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WelderListForm.resx">
+    <EmbeddedResource Include="Forms\WelderListForm.resx">
       <DependentUpon>WelderListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrontPage.resx">
+    <EmbeddedResource Include="Forms\FrontPage.resx">
       <DependentUpon>FrontPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegisterForm.resx">
+    <EmbeddedResource Include="Forms\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WelderInfo.resx">
+    <EmbeddedResource Include="Forms\WelderInfo.resx">
       <DependentUpon>WelderInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -147,6 +162,7 @@
     <None Include="DatabaseADataSet.xss">
       <DependentUpon>DatabaseADataSet.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -178,5 +194,13 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="packages\QuestPDF.2026.2.0\build\net4\QuestPDF.targets" Condition="Exists('packages\QuestPDF.2026.2.0\build\net4\QuestPDF.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\QuestPDF.2026.2.0\build\net4\QuestPDF.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\QuestPDF.2026.2.0\build\net4\QuestPDF.targets'))" />
+  </Target>
 </Project>
