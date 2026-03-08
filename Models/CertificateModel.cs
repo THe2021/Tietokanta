@@ -9,12 +9,15 @@ namespace DataBaseA.Models
         public int Id { get; set; }
         public int WelderId { get; set; }
         public string CertificateName { get; set; }
+        public string WelderName { get; set; }
+        public string WelderCode { get; set; }
+        public string Employer { get; set; }
         public string IssuingAuthority { get; set; }
         public DateTime IssueDate { get; set; }
         public DateTime ExpiryDate { get; set; }
         public string ProductType { get; set; }
-        public decimal MaterialThickness { get; set; }
-        public decimal PipeDiameter { get; set; }
+        public decimal? MaterialThickness { get; set; }
+        public decimal? PipeDiameter { get; set; }
         public string WeldingPosition { get; set; }
         public string TestSupervisorName { get; set; }
         public string ExaminationBody { get; set; }

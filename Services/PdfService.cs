@@ -1,6 +1,8 @@
 ﻿using DataBaseA.Models;
 using DataBaseA.Pdf;
 using QuestPDF.Fluent;
+using System.Drawing;
+using System.IO;
 
 namespace DataBaseA.Services
 {
@@ -11,5 +13,7 @@ namespace DataBaseA.Services
             var document = new CertificatePdfDocument(certificate);
             document.GeneratePdf(path);
         }
+
+       
     }
 }

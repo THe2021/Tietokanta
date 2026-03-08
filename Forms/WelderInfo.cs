@@ -68,7 +68,7 @@ namespace DataBaseA
                 {
                     // Fill your form fields with data
                     textBox1.Text = reader["Name"]?.ToString();
-                    textBox2.Text = reader["ID"]?.ToString().Trim();   // NCHAR trimmed
+                    textBox2.Text = reader["WelderCode"]?.ToString().Trim();   // NCHAR trimmed
                     textBox3.Text = reader["POB"]?.ToString().Trim();
 
                     if (!reader.IsDBNull(reader.GetOrdinal("DOB")))
@@ -132,14 +132,14 @@ namespace DataBaseA
                     conn.Open();
 
                     string sql = @"
-                INSERT INTO dbo.Hitsari (Name, ID, POB, DOB, Employer)
+                INSERT INTO dbo.Hitsari (Name, WelderCode, POB, DOB, Employer)
                 OUTPUT INSERTED.WelderID
-                VALUES (@Name, @ID, @POB, @DOB, @Employer)";
+                VALUES (@Name, @WelderCode, @POB, @DOB, @Employer)";
 
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@Name", textBox1.Text.Trim());
-                        cmd.Parameters.AddWithValue("@ID", textBox2.Text.Trim());
+                        cmd.Parameters.AddWithValue("@WelderCode", textBox2.Text.Trim());
                         cmd.Parameters.AddWithValue("@POB", textBox3.Text.Trim());
                         cmd.Parameters.AddWithValue("@DOB", dob);
                         cmd.Parameters.AddWithValue("@Employer", textBox5.Text.Trim());
