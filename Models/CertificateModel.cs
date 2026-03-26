@@ -28,4 +28,18 @@ namespace DataBaseA.Models
         public List<string> ParentMaterials { get; set; } = new List<string>();
         public List<ProcessModel> Processes { get; set; } = new List<ProcessModel>();
     }
+/*
+    public class ProcessDetails
+    {
+        public string ProcessCode { get; set; }
+        public string FillerMaterialGroup { get; set; }
+        public string FillerMaterialDesignation { get; set; }
+        public string FillerMaterialTradeName { get; set; }
+        public string FillerMaterialType { get; set; }
+        public string Polarity { get; set; }
+        public string ShieldingGas { get; set; }
+        public string Auxiliaries { get; set; }
+        public bool IsMultilayer { get; set; }
+    }
+*/
 }

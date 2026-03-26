@@ -21,7 +21,7 @@ namespace DataBaseA
             comboBoxFilter.Items.Clear();
             comboBoxFilter.Items.Add("Name");
             comboBoxFilter.Items.Add("Employer");
-            comboBoxFilter.Items.Add("ID");
+            comboBoxFilter.Items.Add("WelderCode");
             comboBoxFilter.SelectedIndex = 0;
 
             dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
@@ -43,6 +43,19 @@ namespace DataBaseA
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     dataGridView1.DataSource = dt;
+
+                    dataGridView1.AllowUserToAddRows = false;
+
+                    AdjustDataGridViewHeight();
+                    dataGridView1.AutoSizeColumnsMode =
+                        DataGridViewAutoSizeColumnsMode.Fill;
+
+                    dataGridView1.SelectionMode =
+                        DataGridViewSelectionMode.FullRowSelect;
+
+                    dataGridView1.MultiSelect = false;
+
+
                 }
             }
             catch (Exception ex)
@@ -54,6 +67,22 @@ namespace DataBaseA
                     MessageBoxIcon.Error
                 );
             }
+        }
+
+        private void AdjustDataGridViewHeight()
+        {
+            int rowCount = dataGridView1.Rows.Count;
+
+            if (rowCount == 0)
+                return;
+
+            int visibleRows = Math.Min(rowCount, 10);
+
+            int rowHeight = dataGridView1.RowTemplate.Height;
+            int headerHeight = dataGridView1.ColumnHeadersHeight;
+
+            dataGridView1.Height =
+                headerHeight + (rowHeight * visibleRows) + 2;
         }
 
         private void SearchWelders()
@@ -72,8 +101,8 @@ namespace DataBaseA
                 query = "SELECT * FROM Hitsari WHERE Name LIKE @param";
             else if (filter == "Employer")
                 query = "SELECT * FROM Hitsari WHERE Employer LIKE @param";
-            else if (filter == "ID")
-                query = "SELECT * FROM Hitsari WHERE ID LIKE @param";
+            else if (filter == "WelderCode")
+                query = "SELECT * FROM Hitsari WHERE WelderCode LIKE @param";
 
             using (SqlConnection conn = new SqlConnection(connString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -85,6 +114,7 @@ namespace DataBaseA
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     dataGridView1.DataSource = dt;
+                    AdjustDataGridViewHeight();
                 }
             }
         }

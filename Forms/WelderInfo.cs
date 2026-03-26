@@ -163,7 +163,7 @@ namespace DataBaseA
             WelderInfo updatedForm = new WelderInfo(newWelderId);
             updatedForm.Show();
 
-            this.Close(); // close the temp "new welder" form
+           // this.Close(); // close the temp "new welder" form
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -210,8 +210,33 @@ namespace DataBaseA
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     dataGridViewCertificates.DataSource = dt;
+                    AdjustDataGridViewHeight();
+
+                    dataGridViewCertificates.AutoSizeColumnsMode =    
+                        DataGridViewAutoSizeColumnsMode.Fill;
+
+                    dataGridViewCertificates.SelectionMode =
+                        DataGridViewSelectionMode.FullRowSelect;
+
+                    dataGridViewCertificates.MultiSelect = false;
                 }
             }
+        }
+
+        private void AdjustDataGridViewHeight()
+        {
+            int rowCount = dataGridViewCertificates.Rows.Count;
+
+            if (rowCount == 0)
+                return;
+
+            int visibleRows = Math.Min(rowCount, 10);
+
+            int rowHeight = dataGridViewCertificates.RowTemplate.Height;
+            int headerHeight = dataGridViewCertificates.ColumnHeadersHeight;
+
+            dataGridViewCertificates.Height =
+                headerHeight + (rowHeight * visibleRows) + 2;
         }
 
         private void dataGridViewCertificates_CellContentClick(object sender, DataGridViewCellEventArgs e)

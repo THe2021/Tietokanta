@@ -12,10 +12,6 @@
         private System.Windows.Forms.TextBox textBoxAuthority;
         private System.Windows.Forms.DateTimePicker dateTimePickerIssue;
         private System.Windows.Forms.DateTimePicker dateTimePickerExpiry;
-
-        // Additional certificate info
-        private System.Windows.Forms.TextBox textBoxProductType;
-        private System.Windows.Forms.NumericUpDown numericMaterialThickness;
         private System.Windows.Forms.NumericUpDown numericPipeDiameter;
         private System.Windows.Forms.ComboBox comboBoxWeldingPosition;
 
@@ -24,9 +20,6 @@
         private System.Windows.Forms.TextBox textBoxExaminationBody;
         private System.Windows.Forms.TextBox textBoxExaminationSignature;
         private System.Windows.Forms.TextBox textBoxRemarks;
-
-        // Multi-value info
-        private System.Windows.Forms.CheckedListBox checkedListBoxJointTypes;
         private System.Windows.Forms.CheckedListBox checkedListBoxParentMaterials;
 
         // Tests
@@ -58,15 +51,12 @@
             this.textBoxAuthority = new System.Windows.Forms.TextBox();
             this.dateTimePickerIssue = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerExpiry = new System.Windows.Forms.DateTimePicker();
-            this.textBoxProductType = new System.Windows.Forms.TextBox();
-            this.numericMaterialThickness = new System.Windows.Forms.NumericUpDown();
             this.numericPipeDiameter = new System.Windows.Forms.NumericUpDown();
             this.comboBoxWeldingPosition = new System.Windows.Forms.ComboBox();
             this.textBoxSupervisorName = new System.Windows.Forms.TextBox();
             this.textBoxExaminationBody = new System.Windows.Forms.TextBox();
             this.textBoxExaminationSignature = new System.Windows.Forms.TextBox();
             this.textBoxRemarks = new System.Windows.Forms.TextBox();
-            this.checkedListBoxJointTypes = new System.Windows.Forms.CheckedListBox();
             this.checkedListBoxParentMaterials = new System.Windows.Forms.CheckedListBox();
             this.dataGridViewTests = new System.Windows.Forms.DataGridView();
             this.TestType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,19 +69,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.dataGridViewProcesses = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.numericMaterialThickness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericPipeDiameter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProcesses)).BeginInit();
@@ -106,93 +92,71 @@
             // 
             // textBoxAuthority
             // 
-            this.textBoxAuthority.Location = new System.Drawing.Point(240, 20);
+            this.textBoxAuthority.Location = new System.Drawing.Point(645, 519);
             this.textBoxAuthority.Name = "textBoxAuthority";
             this.textBoxAuthority.Size = new System.Drawing.Size(200, 20);
             this.textBoxAuthority.TabIndex = 1;
             // 
             // dateTimePickerIssue
             // 
-            this.dateTimePickerIssue.Location = new System.Drawing.Point(20, 60);
+            this.dateTimePickerIssue.Location = new System.Drawing.Point(664, 609);
             this.dateTimePickerIssue.Name = "dateTimePickerIssue";
             this.dateTimePickerIssue.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerIssue.TabIndex = 2;
             // 
             // dateTimePickerExpiry
             // 
-            this.dateTimePickerExpiry.Location = new System.Drawing.Point(240, 60);
+            this.dateTimePickerExpiry.Location = new System.Drawing.Point(663, 684);
             this.dateTimePickerExpiry.Name = "dateTimePickerExpiry";
             this.dateTimePickerExpiry.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerExpiry.TabIndex = 3;
             // 
-            // textBoxProductType
-            // 
-            this.textBoxProductType.Location = new System.Drawing.Point(20, 100);
-            this.textBoxProductType.Name = "textBoxProductType";
-            this.textBoxProductType.Size = new System.Drawing.Size(100, 20);
-            this.textBoxProductType.TabIndex = 4;
-            // 
-            // numericMaterialThickness
-            // 
-            this.numericMaterialThickness.Location = new System.Drawing.Point(20, 143);
-            this.numericMaterialThickness.Name = "numericMaterialThickness";
-            this.numericMaterialThickness.Size = new System.Drawing.Size(120, 20);
-            this.numericMaterialThickness.TabIndex = 11;
-            // 
             // numericPipeDiameter
             // 
-            this.numericPipeDiameter.Location = new System.Drawing.Point(20, 183);
+            this.numericPipeDiameter.Location = new System.Drawing.Point(452, 109);
             this.numericPipeDiameter.Name = "numericPipeDiameter";
             this.numericPipeDiameter.Size = new System.Drawing.Size(120, 20);
             this.numericPipeDiameter.TabIndex = 13;
             // 
             // comboBoxWeldingPosition
             // 
-            this.comboBoxWeldingPosition.Location = new System.Drawing.Point(20, 220);
+            this.comboBoxWeldingPosition.Location = new System.Drawing.Point(645, 206);
             this.comboBoxWeldingPosition.Name = "comboBoxWeldingPosition";
             this.comboBoxWeldingPosition.Size = new System.Drawing.Size(121, 21);
             this.comboBoxWeldingPosition.TabIndex = 14;
             // 
             // textBoxSupervisorName
             // 
-            this.textBoxSupervisorName.Location = new System.Drawing.Point(20, 260);
+            this.textBoxSupervisorName.Location = new System.Drawing.Point(25, 519);
             this.textBoxSupervisorName.Name = "textBoxSupervisorName";
             this.textBoxSupervisorName.Size = new System.Drawing.Size(100, 20);
             this.textBoxSupervisorName.TabIndex = 17;
             // 
             // textBoxExaminationBody
             // 
-            this.textBoxExaminationBody.Location = new System.Drawing.Point(240, 260);
+            this.textBoxExaminationBody.Location = new System.Drawing.Point(191, 519);
             this.textBoxExaminationBody.Name = "textBoxExaminationBody";
             this.textBoxExaminationBody.Size = new System.Drawing.Size(100, 20);
             this.textBoxExaminationBody.TabIndex = 18;
             // 
             // textBoxExaminationSignature
             // 
-            this.textBoxExaminationSignature.Location = new System.Drawing.Point(460, 260);
+            this.textBoxExaminationSignature.Location = new System.Drawing.Point(371, 519);
             this.textBoxExaminationSignature.Name = "textBoxExaminationSignature";
             this.textBoxExaminationSignature.Size = new System.Drawing.Size(100, 20);
             this.textBoxExaminationSignature.TabIndex = 19;
             // 
             // textBoxRemarks
             // 
-            this.textBoxRemarks.Location = new System.Drawing.Point(20, 300);
+            this.textBoxRemarks.Location = new System.Drawing.Point(30, 474);
             this.textBoxRemarks.Name = "textBoxRemarks";
             this.textBoxRemarks.Size = new System.Drawing.Size(600, 20);
             this.textBoxRemarks.TabIndex = 20;
             // 
-            // checkedListBoxJointTypes
-            // 
-            this.checkedListBoxJointTypes.CheckOnClick = true;
-            this.checkedListBoxJointTypes.Location = new System.Drawing.Point(22, 349);
-            this.checkedListBoxJointTypes.Name = "checkedListBoxJointTypes";
-            this.checkedListBoxJointTypes.Size = new System.Drawing.Size(120, 79);
-            this.checkedListBoxJointTypes.TabIndex = 21;
-            // 
             // checkedListBoxParentMaterials
             // 
             this.checkedListBoxParentMaterials.CheckOnClick = true;
-            this.checkedListBoxParentMaterials.Location = new System.Drawing.Point(184, 349);
+            this.checkedListBoxParentMaterials.Location = new System.Drawing.Point(792, 101);
             this.checkedListBoxParentMaterials.Name = "checkedListBoxParentMaterials";
             this.checkedListBoxParentMaterials.Size = new System.Drawing.Size(120, 79);
             this.checkedListBoxParentMaterials.TabIndex = 23;
@@ -257,7 +221,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(243, 4);
+            this.label2.Location = new System.Drawing.Point(642, 503);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 28;
@@ -266,7 +230,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 43);
+            this.label3.Location = new System.Drawing.Point(660, 584);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 29;
@@ -275,34 +239,16 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(243, 43);
+            this.label4.Location = new System.Drawing.Point(665, 658);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 30;
             this.label4.Text = "Expiry Date";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 86);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 13);
-            this.label5.TabIndex = 31;
-            this.label5.Text = "Product type";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(21, 127);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(92, 13);
-            this.label9.TabIndex = 35;
-            this.label9.Text = "Material thickness";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(23, 167);
+            this.label11.Location = new System.Drawing.Point(449, 93);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(71, 13);
             this.label11.TabIndex = 37;
@@ -311,7 +257,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(22, 206);
+            this.label12.Location = new System.Drawing.Point(642, 190);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(85, 13);
             this.label12.TabIndex = 38;
@@ -320,7 +266,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(19, 247);
+            this.label15.Location = new System.Drawing.Point(27, 503);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(86, 13);
             this.label15.TabIndex = 41;
@@ -329,7 +275,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(242, 247);
+            this.label16.Location = new System.Drawing.Point(188, 503);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(90, 13);
             this.label16.TabIndex = 42;
@@ -338,7 +284,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(461, 247);
+            this.label17.Location = new System.Drawing.Point(368, 503);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(110, 13);
             this.label17.TabIndex = 43;
@@ -347,25 +293,16 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(23, 284);
+            this.label18.Location = new System.Drawing.Point(27, 458);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(49, 13);
             this.label18.TabIndex = 44;
             this.label18.Text = "Remarks";
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(22, 333);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(52, 13);
-            this.label19.TabIndex = 45;
-            this.label19.Text = "Joint type";
-            // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(181, 333);
+            this.label21.Location = new System.Drawing.Point(789, 75);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(82, 13);
             this.label21.TabIndex = 47;
@@ -383,10 +320,10 @@
             // dataGridViewProcesses
             // 
             this.dataGridViewProcesses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewProcesses.Location = new System.Drawing.Point(22, 446);
+            this.dataGridViewProcesses.Location = new System.Drawing.Point(20, 70);
             this.dataGridViewProcesses.Name = "dataGridViewProcesses";
             this.dataGridViewProcesses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewProcesses.Size = new System.Drawing.Size(1015, 105);
+            this.dataGridViewProcesses.Size = new System.Drawing.Size(271, 157);
             this.dataGridViewProcesses.TabIndex = 53;
             // 
             // CertificateForm
@@ -395,15 +332,12 @@
             this.Controls.Add(this.dataGridViewProcesses);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -412,21 +346,17 @@
             this.Controls.Add(this.textBoxAuthority);
             this.Controls.Add(this.dateTimePickerIssue);
             this.Controls.Add(this.dateTimePickerExpiry);
-            this.Controls.Add(this.textBoxProductType);
-            this.Controls.Add(this.numericMaterialThickness);
             this.Controls.Add(this.numericPipeDiameter);
             this.Controls.Add(this.comboBoxWeldingPosition);
             this.Controls.Add(this.textBoxSupervisorName);
             this.Controls.Add(this.textBoxExaminationBody);
             this.Controls.Add(this.textBoxExaminationSignature);
             this.Controls.Add(this.textBoxRemarks);
-            this.Controls.Add(this.checkedListBoxJointTypes);
             this.Controls.Add(this.checkedListBoxParentMaterials);
             this.Controls.Add(this.dataGridViewTests);
             this.Controls.Add(this.buttonSave);
             this.Name = "CertificateForm";
             this.Text = "Add Certificate";
-            ((System.ComponentModel.ISupportInitialize)(this.numericMaterialThickness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericPipeDiameter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTests)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProcesses)).EndInit();
@@ -446,15 +376,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.DataGridViewTextBoxColumn TestType;

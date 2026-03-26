@@ -117,6 +117,7 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\CertificateModel.cs" />
+    <Compile Include="Models\ProcessDetails.cs" />
     <Compile Include="Models\ProcessModel.cs" />
     <Compile Include="Pdf\CertificatePdfDocument.cs" />
     <Compile Include="Program.cs" />
