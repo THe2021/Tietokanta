@@ -65,6 +65,8 @@ namespace DataBaseA
             dataGridViewProcesses.Rows.Add("Shielding Gas", "");
             dataGridViewProcesses.Rows.Add("Material Thickness", "");
             dataGridViewProcesses.Rows.Add("Deposited Thickness", "");
+            dataGridViewProcesses.Rows.Add("Pipe Diameter", "");
+            dataGridViewProcesses.Rows.Add("Welding Position", "");
             dataGridViewProcesses.Rows.Add("Multilayer", "");
             dataGridViewProcesses.Rows.Add("Weld Details", "");
 
@@ -128,11 +130,20 @@ namespace DataBaseA
             // Deposited Thickness (TEXT)
             dataGridViewProcesses.Rows[13].Cells[1] = new DataGridViewTextBoxCell();
 
+            // Pipe Diameter
+            dataGridViewProcesses.Rows[14].Cells[1] = new DataGridViewTextBoxCell();
+
+            // Welding Position
+            dataGridViewProcesses.Rows[15].Cells[1] = new DataGridViewComboBoxCell
+            {
+                DataSource = new string[] { "PA", "PB", "PC", "PD", "PE", "PF", "PG" }
+            };
+
             // Multilayer (CHECKBOX)
-            dataGridViewProcesses.Rows[14].Cells[1] = new DataGridViewCheckBoxCell();
+            dataGridViewProcesses.Rows[16].Cells[1] = new DataGridViewCheckBoxCell();
 
             // Weld Details (TEXT)
-            dataGridViewProcesses.Rows[15].Cells[1] = new DataGridViewTextBoxCell();
+            dataGridViewProcesses.Rows[17].Cells[1] = new DataGridViewTextBoxCell();
 
             dataGridViewProcesses.DataError += (s, e2) =>
             {
@@ -141,35 +152,44 @@ namespace DataBaseA
 
             AdjustProcessGridHeight();
 
- 
+            dataGridViewProcesses.CellValidating += (s, args) =>
+            {
+                var field = dataGridViewProcesses.Rows[args.RowIndex].Cells[0].Value?.ToString();
 
-            // -----------------------------
-            // ComboBoxes (certificate-level)
-            // -----------------------------
+                if (field == "Pipe Diameter" &&
+                    !decimal.TryParse(args.FormattedValue?.ToString(), out _))
+                {
+                    MessageBox.Show("Pipe Diameter must be a number.");
+                    args.Cancel = true;
+                }
+            };
 
-            comboBoxWeldingPosition.DropDownStyle = ComboBoxStyle.DropDownList;
-                        comboBoxWeldingPosition.Items.Clear();
-                        comboBoxWeldingPosition.Items.AddRange(new string[]
-                        {
-                    "PA", "PB", "PC", "PD", "PE", "PF", "PG"
-                        });
+            dataGridViewProcesses.EditingControlShowing += (s, ev) =>
+            {
+                if (ev.Control is ComboBox cb)
+                {
+                    cb.DropDownStyle = ComboBoxStyle.DropDownList;
+                    cb.FlatStyle = FlatStyle.Flat;
+                }
+            };
 
-                        // -----------------------------
-                        // CheckedListBoxes (certificate-level)
-                        // -----------------------------
+            dataGridViewProcesses.CurrentCellDirtyStateChanged += (s, ev) =>
+            {
+                if (dataGridViewProcesses.IsCurrentCellDirty)
+                {
+                    dataGridViewProcesses.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                }
+            };
 
-  //                      checkedListBoxJointTypes.Items.Clear();
-  //                      checkedListBoxJointTypes.Items.AddRange(new string[] { "BW", "FW" });
+            dataGridViewProcesses.CellValueChanged += (s, ev) =>
+            {
+                UpdateCertificateName();
+            };
 
-                        checkedListBoxParentMaterials.Items.Clear();
-                        checkedListBoxParentMaterials.Items.AddRange(new string[]
-                        {
-                    "1","2","3","4","5","6","7","8","9","10","11"
-                        });
+            UpdateCertificateName();
 
-
- 
         }
+         
 
         private void AdjustProcessGridHeight()
         {
@@ -188,10 +208,34 @@ namespace DataBaseA
             foreach (DataGridViewRow row in dataGridViewProcesses.Rows)
             {
                 if (row.Cells[0].Value?.ToString() == field)
-                    return row.Cells[1].Value?.ToString();
+                    return row.Cells[1].Value?.ToString() ?? "";
             }
 
             return null;
+        }
+
+        private void UpdateCertificateName()
+        {
+            string process = GetProcessValue("Process Code");
+            string joint = GetProcessValue("Joint Type");
+            string product = GetProcessValue("Product Type");
+            string position = GetProcessValue("Welding Position");
+
+            string name = $"{welderId}";
+
+            if (!string.IsNullOrWhiteSpace(process))
+                name += $" - {process}";
+
+            if (!string.IsNullOrWhiteSpace(joint))
+                name += $" - {joint}";
+
+            if (!string.IsNullOrWhiteSpace(product))
+                name += $" - {product}";
+
+            if (!string.IsNullOrWhiteSpace(position))
+                name += $" - {position}";
+
+            textBoxCertName.Text = name;
         }
 
 
@@ -221,20 +265,8 @@ namespace DataBaseA
             }
 
             bool hasProcess = !string.IsNullOrWhiteSpace(GetProcessValue("Process Code"));
-            /*
-                        // At least one welding process
-                        bool hasProcess = dataGridViewProcesses.Rows
-                            .Cast<DataGridViewRow>()
-                            .Any(r => !r.IsNewRow &&
-                                      !string.IsNullOrWhiteSpace(
-                                          r.Cells["ProcessCode"].Value?.ToString()));
+ 
 
-                        if (!hasProcess)
-                        {
-                            MessageBox.Show("At least one welding process must be defined.");
-                            return;
-                        }
-            */
             string connString = ConfigurationManager
                 .ConnectionStrings["DataBaseA.Properties.Settings.DatabaseAConnectionString"]
                 .ConnectionString;
@@ -279,44 +311,25 @@ namespace DataBaseA
                     {
                         cmdCert.Parameters.AddWithValue("@MaterialThickness", DBNull.Value);
                     }
-                    cmdCert.Parameters.AddWithValue("@PipeDiameter", numericPipeDiameter.Value);
+                    string pipeText = GetProcessValue("Pipe Diameter");
+
+                    if (decimal.TryParse(pipeText, out decimal pipe))
+                    {
+                        cmdCert.Parameters.Add("@PipeDiameter", SqlDbType.Decimal).Value = pipe;
+                    }
+                    else
+                    {
+                        cmdCert.Parameters.Add("@PipeDiameter", SqlDbType.Decimal).Value = DBNull.Value;
+                    }
                     cmdCert.Parameters.AddWithValue("@WeldingPosition",
-                        comboBoxWeldingPosition.SelectedItem?.ToString());
+                    GetProcessValue("Welding Position") ?? (object)DBNull.Value);
+
                     cmdCert.Parameters.AddWithValue("@Supervisor", textBoxSupervisorName.Text.Trim());
                     cmdCert.Parameters.AddWithValue("@ExamBody", textBoxExaminationBody.Text.Trim());
                     cmdCert.Parameters.AddWithValue("@Signature", textBoxExaminationSignature.Text.Trim());
                     cmdCert.Parameters.AddWithValue("@Remarks", textBoxRemarks.Text.Trim());
 
                     int certificateId = Convert.ToInt32(cmdCert.ExecuteScalar());
-
-                    // -----------------------------
-                    // Insert Joint Types
-                    // -----------------------------
-                    /*
-                                        foreach (var jt in checkedListBoxJointTypes.CheckedItems)
-                                        {
-                                            SqlCommand cmd = new SqlCommand(
-                                                "INSERT INTO CertificateJointTypes (CertificateId, JointType) VALUES (@C, @J)",
-                                                conn, tx);
-                                            cmd.Parameters.AddWithValue("@C", certificateId);
-                                            cmd.Parameters.AddWithValue("@J", jt.ToString());
-                                            cmd.ExecuteNonQuery();
-                                        }
-
-                                        // -----------------------------
-                                        // Insert Parent Materials
-                                        // -----------------------------
-
-                                        foreach (var pm in checkedListBoxParentMaterials.CheckedItems)
-                                        {
-                                            SqlCommand cmd = new SqlCommand(
-                                                "INSERT INTO CertificateParentMaterials (CertificateId, MaterialGroup) VALUES (@C, @M)",
-                                                conn, tx);
-                                            cmd.Parameters.AddWithValue("@C", certificateId);
-                                            cmd.Parameters.AddWithValue("@M", pm.ToString());
-                                            cmd.ExecuteNonQuery();
-                                        }
-                    */
 
 
                     // -----------------------------
@@ -353,36 +366,6 @@ namespace DataBaseA
                         cmd2.ExecuteNonQuery();
                     }
 
-                    /*
-                    var selectedMaterials = checkedListBoxParentMaterials.CheckedItems
-                        .Cast<object>()
-                        .Select(x => x.ToString())
-                        .ToList();
-
-                    if (selectedMaterials.Count == 0)
-                    {
-                        MessageBox.Show("Please select at least one parent material.");
-                        return;
-                    }
-
-                    if (selectedMaterials.Count > 2)
-                    {
-                        MessageBox.Show("Maximum two parent materials can be selected.");
-                        return;
-                    }
-
-                    foreach (string pm in selectedMaterials)
-                    {
-                        SqlCommand cmd = new SqlCommand(
-                            "INSERT INTO CertificateParentMaterials (CertificateId, MaterialGroup) VALUES (@C, @M)",
-                            conn, tx);
-
-                        cmd.Parameters.AddWithValue("@C", certificateId);
-                        cmd.Parameters.AddWithValue("@M", pm);
-
-                        cmd.ExecuteNonQuery();
-                    }
-                    */
 
                     // --------------------------------------------------
                     //    INSERT PROCESSDETAILS
